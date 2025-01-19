@@ -1,0 +1,16 @@
+body {
+    text-transform: capitalize;
+}
+
+#navigation {
+    padding: 10px 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#navigation button {
+    background-color: white !important;
+    color: black !important;
+    font-size: 2em;
+    border: 1px solid black;
+    margin-left: 2%;
+}
