@@ -10,7 +10,10 @@ body {
 #navigation button {
     background-color: white !important;
     color: black !important;
-    font-size: 2em;
-    border: 1px solid black;
+    font-size: 1em;
     margin-left: 2%;
+}
+
+#drawer-navigation-label{
+    cursor: pointer;
 }

@@ -10,6 +10,7 @@ import {
     addDoc,
     setDoc,
     updateProfile,
+    onSnapshot,
 
 } from "../../firebase.js";
 
@@ -20,9 +21,9 @@ let checkUser = () => { // check if user sign In
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            console.log("Check User =>", user);
-            
-            window.location.replace("/index.html");
+
+            console.log(user);
+            // window.location.replace("/index.html");
 
         } else {
             console.log("User Not Found");
@@ -50,7 +51,18 @@ let signUp_User = async (event) => {
     try {
 
         const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+        console.log("user => ", userCredential);
+        const user = userCredential?.user;
         const { uid } = userCredential?.user
+
+        const docRef = await addDoc(collection(db, "users"), {
+            firstName,
+            lastName,
+            email,
+            phone,
+            password,
+        });
+        console.log("Document Added to the DataBase : ", docRef.id);
 
         await setDoc(doc(db, `users`, uid), {
             displayName: `${firstName} ${lastName}`,
@@ -60,18 +72,19 @@ let signUp_User = async (event) => {
 
         await updateProfile(auth.currentUser, {
             displayName: `${firstName} ${lastName}`,
-            photoURL: "https://www.stickpng.com/img/icons-logos-emojis/users/circled-user-icon"
         });
         console.log("Profile updated successfully!");
+        console.log("displayName =>", user?.displayName);
+
 
         btn.disabled = false;
         btn.innerText = "Submit"
 
-        window.location.replace("/index.html");
+        setInterval(window.location.replace("/index.html"), 10000);
 
     } catch (err) {
         alert(err.message);
-        // console.log(err.message);
+        console.log(err.message);
         btn.disabled = false;
         btn.innerText = "Submit"
     }

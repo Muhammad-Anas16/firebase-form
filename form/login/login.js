@@ -41,9 +41,9 @@ const signIn_User = async (event) => {
 
             btn.disabled = false;
             btn.innerText = "Submit"
+            window.location.replace("/index.html");
         })
         .catch((error) => {
-            // alert(error.message);
             console.log(error.message);
 
             btn.disabled = false;
@@ -73,21 +73,19 @@ const logInWithGoogleFunc = () => { // Function To Login with Google
         });
 }
 
-const forgetPass = () => {
-    console.log("forget");
-}
-
 // Call Function
 
 checkUser();
 
 // Add Event Listener
 
+const forgetPass_Btn = document.getElementById("FP_Btn");
+forgetPass_Btn.addEventListener("click", () => {
+    window.location.assign("/form/forgetPassword/forget.html");
+});
+
 const signIn_Btn = document.getElementById("signIn_form");
 signIn_Btn.addEventListener("submit", signIn_User);
 
 const google_Btn = document.getElementById("google");
 google_Btn.addEventListener("click", logInWithGoogleFunc);
-
-const forget_Pass_Btn = document.getElementById("forgetPassword");
-forget_Pass_Btn.addEventListener("click", forgetPass);

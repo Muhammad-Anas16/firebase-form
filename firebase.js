@@ -10,6 +10,7 @@ import {
     signOut,
     GoogleAuthProvider,
     signInWithPopup,
+    sendPasswordResetEmail,
 
 } from 'https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js'
 
@@ -19,6 +20,7 @@ import {
     doc,
     addDoc,
     setDoc,
+    onSnapshot,
 
 } from 'https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js'
 
@@ -52,4 +54,6 @@ export {
     signOut,
     provider,
     signInWithPopup,
+    sendPasswordResetEmail,
+    onSnapshot,
 }
