@@ -14,6 +14,9 @@ body {
     margin-left: 2%;
 }
 
+button:hover {
+    color: black !important;
+}
 #drawer-navigation-label{
     cursor: pointer;
 }
