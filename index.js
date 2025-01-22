@@ -60,3 +60,4 @@ loginBtn.addEventListener("click", () => {
 
 let logOutBtn = document.getElementById("sign_Out"); // For Log_Out Account
 logOutBtn.addEventListener("click", logOutAccount);
+
