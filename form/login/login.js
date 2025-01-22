@@ -6,6 +6,7 @@ import {
     onAuthStateChanged,
     provider,
     signInWithPopup,
+    addDoc,collection,db
 
 } from "../../firebase.js";
 
@@ -55,12 +56,20 @@ const signIn_User = async (event) => {
 
 }
 
-const logInWithGoogleFunc = () => { // Function To Login with Google
+const logInWithGoogleFunc =  () => { // Function To Login with Google
     signInWithPopup(auth, provider)
-        .then((result) => {
+        .then(async(result) => {
             // This gives you a Google Access Token. You can use it to access the Google API.
             const credential = GoogleAuthProvider.credentialFromResult(result);
             console.log(credential);
+
+            const docRef = await addDoc(collection(db, "users"), {
+                displayName: `${firstName} ${lastName}`,
+                email: email,
+                phoneNumber: phone,
+                uid: uid,
+            });
+            console.log("Document Added to the DataBase : ", docRef);
         }).catch((error) => {
             alert(error.message)
 

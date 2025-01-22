@@ -10,7 +10,6 @@ import {
     addDoc,
     setDoc,
     updateProfile,
-    onSnapshot,
 
 } from "../../firebase.js";
 
@@ -56,15 +55,12 @@ let signUp_User = async (event) => {
         const { uid } = userCredential?.user
 
         const docRef = await addDoc(collection(db, "users"), {
-            firstName,
-            lastName,
-            email,
-            phone,
-            password,
-            uid,
-            photoURL,
+            displayName: `${firstName} ${lastName}`,
+            email: email,
+            phoneNumber: phone,
+            uid: uid,
         });
-        console.log("Document Added to the DataBase : ", docRef.id);
+        console.log("Document Added to the DataBase : ", docRef);
 
         await setDoc(doc(db, `users`, uid), {
             displayName: `${firstName} ${lastName}`,
