@@ -12,13 +12,20 @@ body {
 
 #navigation button {
     background-color: #111827;
-    /* background-color: white !important; */
     border: 1px solid white !important;
     color: rgb(255, 255, 255) !important;
     font-size: 1em;
     margin-left: 2%;
     padding: 10px 16px;
     font-size: 1.5em;
+}
+
+#drawer-navigation{
+    background-color: #111827;
+}
+
+#drawer-navigation span{
+    color: #6B7280 !important;
 }
 
 button:hover {
