@@ -61,6 +61,8 @@ let signUp_User = async (event) => {
             email,
             phone,
             password,
+            uid,
+            photoURL,
         });
         console.log("Document Added to the DataBase : ", docRef.id);
 
@@ -68,6 +70,7 @@ let signUp_User = async (event) => {
             displayName: `${firstName} ${lastName}`,
             email: email,
             phoneNumber: phone,
+
         });
 
         await updateProfile(auth.currentUser, {
