@@ -3,6 +3,10 @@ body {
     overflow-x: hidden;
 }
 
+li:hover{
+    color: #1A56DB !important;
+}
+
 section {
     width: 100%;
     height: 100vh;

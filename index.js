@@ -11,23 +11,12 @@ const checkUser = () => { // check if user sign In
     onAuthStateChanged(auth, (user) => {
         if (user) {
 
-            console.log(user);
-            const user_login = user?.displayName;
+            // const user_login = user?.displayName;
 
-            // document.getElementById("UserName").innerText = user_login;
-            // document.getElementById("userName_In_Menu").innerText = user_login;
-
-            // logOutBtn.style.display = "block";
             loginBtn.innerText = `Sign Out`;
 
         } else {
             console.log("User Not Found");
-
-            // document.getElementById("UserName").innerText = "Navigation";
-            // document.getElementById("userName_In_Menu").innerText = "User";
-
-            // loginBtn.style.display = "block";
-            // logOutBtn.style.display = "none";
             loginBtn.innerText = `Sign In`;
         }
     });
