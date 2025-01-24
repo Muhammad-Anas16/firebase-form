@@ -14,20 +14,21 @@ const checkUser = () => { // check if user sign In
             console.log(user);
             const user_login = user?.displayName;
 
-            document.getElementById("UserName").innerText = user_login;
-            document.getElementById("userName_In_Menu").innerText = user_login;
+            // document.getElementById("UserName").innerText = user_login;
+            // document.getElementById("userName_In_Menu").innerText = user_login;
 
-            logOutBtn.style.display = "block";
-            loginBtn.style.display = "none";
+            // logOutBtn.style.display = "block";
+            loginBtn.innerText = `Sign Out`;
 
         } else {
             console.log("User Not Found");
 
-            document.getElementById("UserName").innerText = "Navigation";
-            document.getElementById("userName_In_Menu").innerText = "User";
+            // document.getElementById("UserName").innerText = "Navigation";
+            // document.getElementById("userName_In_Menu").innerText = "User";
 
-            loginBtn.style.display = "block";
-            logOutBtn.style.display = "none";
+            // loginBtn.style.display = "block";
+            // logOutBtn.style.display = "none";
+            loginBtn.innerText = `Sign In`;
         }
     });
 }
@@ -54,10 +55,14 @@ checkUser();
 
 let loginBtn = document.getElementById("sign_In"); // go to Login Page
 loginBtn.addEventListener("click", () => {
-    window.location.assign("form/login/login.html");
+    if(loginBtn.innerText == `Sign In`){
+        logOutAccount();
+    }else{
+        window.location.assign("form/login/login.html");
+    }
 });
 
 
-let logOutBtn = document.getElementById("sign_Out"); // For Log_Out Account
-logOutBtn.addEventListener("click", logOutAccount);
+// let logOutBtn = document.getElementById("sign_Out"); // For Log_Out Account
+// logOutBtn.addEventListener("click", logOutAccount);
 
