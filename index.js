@@ -6,22 +6,6 @@ import {
 
 // Functions
 
-const checkUser = () => { // check if user sign In
-
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-
-            // const user_login = user?.displayName;
-
-            loginBtn.innerText = `Sign Out`;
-
-        } else {
-            console.log("User Not Found");
-            loginBtn.innerText = `Sign In`;
-        }
-    });
-}
-
 const logOutAccount = () => { // Log_Out Account 
 
     signOut(auth).then(() => {
@@ -36,6 +20,27 @@ const logOutAccount = () => { // Log_Out Account
 
 }
 
+const checkUser = () => { // check if user sign In
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+
+            // const user_login = user?.displayName;
+            loginBtn.addEventListener("click", logOutAccount);
+            loginBtn.innerText = `Sign Out`;
+            console.log(user);
+
+        } else {
+            console.log("User Not Found");
+            loginBtn.addEventListener("click", () => {
+                window.location.assign("form/login/login.html");
+            });
+            loginBtn.innerText = `Sign In`;
+        }
+    });
+}
+
+
 // Call Functions
 
 checkUser();
@@ -43,15 +48,3 @@ checkUser();
 // Add Event 
 
 let loginBtn = document.getElementById("sign_In"); // go to Login Page
-loginBtn.addEventListener("click", () => {
-    if(loginBtn.innerText == `Sign In`){
-        logOutAccount();
-    }else{
-        window.location.assign("form/login/login.html");
-    }
-});
-
-
-// let logOutBtn = document.getElementById("sign_Out"); // For Log_Out Account
-// logOutBtn.addEventListener("click", logOutAccount);
-
